@@ -86,6 +86,24 @@ describe("Person", () => {
                 expect(introduce).to.equal("My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.");
             });
         });
+
+        describe("#isTeaching", () => {
+            it("if teacher is teaching student, then return true", () => {
+                const teacher = new Teacher(1, "Tom", 21, klasses);
+                const klass = new Class(2);
+                const student = new Student(2, "Jerry", 14, klass);
+                const isTeaching = teacher.isTeaching(student);
+                expect(isTeaching).to.equal(true);
+            });
+
+            it("if teacher is not teaching student, then return false", () => {
+                const teacher = new Teacher(1, "Tom", 21, klasses);
+                const klass = new Class(4);
+                const student = new Student(2, "Jerry", 14, klass);
+                const isTeaching = teacher.isTeaching(student);
+                expect(isTeaching).to.equal(false);
+            });
+        });
     });
 });
 
